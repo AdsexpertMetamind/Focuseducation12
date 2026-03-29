@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>FOREX FOCUS | Forex Educations </title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+width:100%;
+min-height:100vh;
+overflow-x:hidden;
+overflow-y:auto;
+font-family:'Poppins',sans-serif;
+background:#010c04;
+color:#fff
+}
+
+/* BACKGROUND */
+
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+
+.bg-aurora{
+position:absolute;
+inset:0;
+background:
+radial-gradient(ellipse 100% 60% at 50% -5%,rgba(0,255,80,.18) 0%,transparent 60%),
+radial-gradient(ellipse 60% 50% at 95% 105%,rgba(255,40,70,.1) 0%,transparent 55%),
+radial-gradient(ellipse 50% 45% at 5% 95%,rgba(0,160,60,.07) 0%,transparent 50%);
+animation:aur 8s ease-in-out infinite alternate
+}
+
+@keyframes aur{
+0%{opacity:.8}
+100%{opacity:1;filter:brightness(1.2)}
+}
+
+.bg-grid{
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(0,255,80,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,255,80,.035) 1px,transparent 1px);
+background-size:55px 55px
+}
+
+.bg-cg{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:80vmin;
+height:80vmin;
+border-radius:50%;
+background:radial-gradient(circle,rgba(0,255,80,.09) 0%,transparent 65%);
+animation:cg 5s ease-in-out infinite alternate
+}
+
+@keyframes cg{
+from{transform:translate(-50%,-50%) scale(.88);opacity:.5}
+to{transform:translate(-50%,-50%) scale(1.1);opacity:1}
+}
+
+canvas{position:absolute;inset:0}
+
+/* TICKER */
+
+.ticker{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:300;
+height:28px;
+overflow:hidden;
+background:rgba(1,12,4,.98);
+border-bottom:1px solid rgba(0,255,80,.1);
+display:flex;
+align-items:center
+}
+
+.t-track{
+display:flex;
+white-space:nowrap;
+animation:tick 26s linear infinite;
+align-items:center
+}
+
+@keyframes tick{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+.ti{padding:0 20px;font-size:9.5px;font-weight:600;letter-spacing:1px}
+.ti.up{color:#00ff55}
+.ti.dn{color:#ff3349}
+
+/* PAGE */
+
+.page{
+position:relative;
+z-index:10;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:50px 16px 58px
+}
+
+.logo-wrap{
+position:relative;
+width:90px;
+height:90px
+}
+
+.l-img img{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover
+}
+
+.title-area{
+text-align:center;
+margin-top:15px
+}
+
+.title-area h1{
+font-size:clamp(32px,8vw,64px);
+font-weight:900;
+line-height:1
+}
+
+.tg{color:#00ff55}
+.tw{color:#fff}
+.tr{color:#ff3349}
+
+.sub1{
+font-size:12px;
+letter-spacing:3px;
+color:#aaa;
+margin-top:8px
+}
+
+.tagline{
+margin-top:15px;
+padding:8px 16px;
+border-radius:30px;
+background:rgba(0,255,80,.08);
+border:1px solid rgba(0,255,80,.2);
+font-size:13px
+}
+
+.tagline span{
+color:#00ff55;
+font-weight:700
+}
+
+.stats{
+display:flex;
+gap:12px;
+margin-top:18px
+}
+
+.stat{
+padding:10px 16px;
+border-radius:12px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(0,255,80,.14);
+text-align:center
+}
+
+.sn{
+font-size:22px;
+font-weight:900;
+color:#00ff55
+}
+
+.sl{
+font-size:10px;
+color:#aaa
+}
+
+/* FEATURES */
+
+.feats{
+display:flex;
+gap:8px;
+margin-top:20px;
+flex-wrap:wrap;
+justify-content:center
+}
+
+.feat{
+padding:10px;
+border-radius:10px;
+border:1px solid rgba(0,255,80,.15);
+background:rgba(0,255,80,.03);
+text-align:center;
+min-width:70px
+}
+
+.fi{font-size:20px}
+
+.ft{
+font-size:10px;
+margin-top:3px
+}
+
+/* TELEGRAM BUTTON */
+
+.cta-area{
+margin-top:30px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px
+}
+
+.btn-tg{
+display:flex;
+align-items:center;
+justify-content:center;
+height:65px;
+width:min(420px,90vw);
+border-radius:18px;
+text-decoration:none;
+background:linear-gradient(135deg,#00ff55,#00d94a,#00b83c);
+color:#001a08;
+font-weight:900;
+font-size:18px;
+box-shadow:0 10px 35px rgba(0,255,80,.4);
+transition:.2s
+}
+
+.btn-tg:hover{
+transform:translateY(-3px) scale(1.03)
+}
+
+.cta-sub{
+font-size:10px;
+letter-spacing:2px;
+color:#777;
+text-align:center
+}
+
+/* DISCLAIMER */
+
+.disc{
+margin-top:25px;
+padding:8px 16px;
+border-radius:10px;
+border:1px dashed rgba(255,200,0,.2);
+font-size:11px;
+text-align:center;
+color:#bbb;
+max-width:500px
+}
+
+.disc b{color:#ffd700}
+
+/* FOOTER */
+
+footer{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#010c04;
+border-top:1px solid rgba(0,255,80,.1);
+padding:6px;
+text-align:center
+}
+
+.credit{
+font-size:10px;
+color:#777
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+<div class="bg-aurora"></div>
+<div class="bg-grid"></div>
+<canvas id="c"></canvas>
+<div class="bg-cg"></div>
+</div>
+
+<div class="ticker">
+<div class="t-track">
+<span class="ti up">EUR/USD ▲ +0.42%</span>
+<span class="ti dn">GBP/USD ▼ −0.31%</span>
+<span class="ti up">USD/JPY ▲ +0.67%</span>
+<span class="ti up">XAU/USD ▲ +1.15%</span>
+<span class="ti dn">AUD/USD ▼ −0.28%</span>
+<span class="ti up">BTC/USD ▲ +2.40%</span>
+</div>
+</div>
+
+<div class="page">
+
+<div class="logo-wrap">
+<div class="l-img">
+<img src="https://salmon-mandrill-935968.hostingersite.com/wp-content/uploads/2025/10/focus-forex-logo.jpg">
+</div>
+</div>
+
+<div class="title-area">
+<h1><span class="tg">FOREX</span> <span class="tw">FOCUS</span> <span class="tr">Trading</span></h1>
+<div class="sub1">Premium Forex & Currency Market Signals</div>
+</div>
+
+<div class="tagline">
+💰 <span>5,000+ forex traders</span> are already winning — get free signals today!
+</div>
+
+<div class="stats">
+<div class="stat">
+<span class="sn">5K+</span>
+<span class="sl">Members</span>
+</div>
+
+<div class="stat">
+<span class="sn">DAILY</span>
+<span class="sl">Signals</span>
+</div>
+
+<div class="stat">
+<span class="sn">FREE</span>
+<span class="sl">Join</span>
+</div>
+</div>
+
+<div class="feats">
+<div class="feat"><div class="fi">💱</div><div class="ft">Forex</div></div>
+<div class="feat"><div class="fi">🎯</div><div class="ft">Entry</div></div>
+<div class="feat"><div class="fi">⚡</div><div class="ft">Signals</div></div>
+<div class="feat"><div class="fi">🥇</div><div class="ft">Gold</div></div>
+<div class="feat"><div class="fi">🛡️</div><div class="ft">SL</div></div>
+</div>
+
+<div class="cta-area">
+
+<a class="btn-tg" href="https://t.me/+RHarP4-z8M82ZGE1" target="_blank">
+🚀 Join Free on Telegram Channel
+</a>
+
+<div class="cta-sub">
+✦ Free Signals · No Spam · 5,000+ Traders · Join Now ✦
+</div>
+
+</div>
+
+<div class="disc">
+<b>⚠ Disclaimer:</b> Forex trading involves high risk. Signals are for educational purposes only.
+</div>
+
+</div>
+
+<footer>
+  <div class="credit">Ads managed by <a href="https://wa.link/y2913g" target="_blank" onclick="event.stopPropagation()">@Metamind_Agency</a></div>
+</footer>
+
+<script>
+const c=document.getElementById('c'),ctx=c.getContext('2d');
+let W=c.width=innerWidth,H=c.height=innerHeight;
+
+const pts=Array.from({length:60},()=>({
+x:Math.random()*W,
+y:Math.random()*H,
+r:Math.random()*1.5+.5,
+dx:(Math.random()-.5)*.4,
+dy:-Math.random()*.5
+}));
+
+function draw(){
+ctx.clearRect(0,0,W,H);
+
+pts.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="rgba(0,255,80,.5)";
+ctx.fill();
+
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.y<0)p.y=H;
+if(p.x<0||p.x>W)p.dx*=-1;
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
